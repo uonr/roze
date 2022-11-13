@@ -1,0 +1,8 @@
+.direnv/
+.terraform/
+result
+*.iso
+*.tfvars
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
