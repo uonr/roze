@@ -7,8 +7,7 @@ let
 in {
   users.mutableUsers = false;
   users.users.root = {
-    hashedPassword =
-      "$6$Jbm4lUtMUnrNdYQ.$v11f3MPvXxXeTk/i3UKV4RYRc4T6f5pBHslFhAyxiSwtPHNBwuZHnkVWJmQNTjhtPSwGyPdR3CaWW5CWxwZhZ.";
+    hashedPassword = "!";
     openssh.authorizedKeys.keys = sshKeys;
     shell = pkgs.zsh;
   };
