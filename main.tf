@@ -81,24 +81,8 @@ resource "linode_instance_config" "roze" {
   }
 }
 
-resource "linode_volume" "roze-state" {
-  label = "roze-state"
-  region = linode_instance.roze.region
-  size = 10
-  linode_id = linode_instance.roze.id
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
 resource "linode_instance" "roze" {
   label  = "roze"
   region = var.region
   type   = var.instance_type
-  lifecycle {
-    # create_before_destroy = true
-    # replace_triggered_by = [
-    #   linode_image.roze
-    # ]
-  }
 }
