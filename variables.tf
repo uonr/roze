@@ -14,3 +14,11 @@ variable "instance_type" {
 
 variable "terraform_cloud_token" {
 }
+
+variable "nixos_size" {
+  default = 10 * 1024
+}
+
+variable "swap_size" {
+  default = 512
+}

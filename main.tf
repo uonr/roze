@@ -34,9 +34,19 @@ resource "linode_image" "roze" {
 resource "linode_instance_disk" "nixos" {
   label     = "nixos"
   linode_id = linode_instance.roze.id
-  size      = linode_instance.roze.specs.0.disk - 512
+  size      = var.nixos_size
 
   image = linode_image.roze.id
+}
+
+resource "linode_instance_disk" "state" {
+  label      = "state"
+  linode_id  = linode_instance.roze.id
+  filesystem = "ext4"
+  size       = linode_instance.roze.specs.0.disk - var.swap_size - var.nixos_size
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "linode_instance_disk" "swap" {
@@ -50,12 +60,16 @@ resource "linode_instance_config" "roze" {
   label     = "Roze"
   linode_id = linode_instance.roze.id
   kernel    = "linode/grub2"
+  booted    = true
   devices {
     sda {
       disk_id = linode_instance_disk.nixos.id
     }
     sdb {
       disk_id = linode_instance_disk.swap.id
+    }
+    sdc {
+      disk_id = linode_instance_disk.state.id
     }
   }
   helpers {
@@ -67,8 +81,24 @@ resource "linode_instance_config" "roze" {
   }
 }
 
+resource "linode_volume" "roze-state" {
+  label = "roze-state"
+  region = linode_instance.roze.region
+  size = 10
+  linode_id = linode_instance.roze.id
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
 resource "linode_instance" "roze" {
   label  = "roze"
   region = var.region
   type   = var.instance_type
+  lifecycle {
+    # create_before_destroy = true
+    # replace_triggered_by = [
+    #   linode_image.roze
+    # ]
+  }
 }

@@ -41,6 +41,21 @@
         "type": "github"
       }
     },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1661933071,
+        "narHash": "sha256-RFgfzldpbCvS+H2qwH+EvNejvqs+NhPVD5j1I7HQQPY=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "def994adbdfc28974e87b0e4c949e776207d5557",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
     "nixlib": {
       "locked": {
         "lastModified": 1636849918,
@@ -112,10 +127,12 @@
       "inputs": {
         "agenix": "agenix",
         "home-manager": "home-manager",
+        "impermanence": "impermanence",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
         "sweet-home": "sweet-home",
-        "vscode-server": "vscode-server"
+        "vscode-server": "vscode-server",
+        "wired": "wired"
       }
     },
     "sweet-home": {
@@ -169,6 +186,21 @@
         "owner": "msteen",
         "repo": "nixos-vscode-server",
         "type": "github"
+      }
+    },
+    "wired": {
+      "locked": {
+        "lastModified": 1667916181,
+        "narHash": "sha256-Wt6Pau9J1KcldUn0x/RGfVSk3ZIr/JZK8YcFEplWsAk=",
+        "ref": "refs/heads/master",
+        "rev": "426620003562f0f38b6df63c4f642cdda340a71a",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/wired-network/wired-nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/wired-network/wired-nix"
       }
     }
   },
