@@ -5,6 +5,7 @@
     ./virtualisation.nix
     ./ioover.net.nix
     ./nix.nix
+    ./backup.nix
     ./touzibot.nix
   ];
 
