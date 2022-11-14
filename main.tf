@@ -1,7 +1,6 @@
 terraform {
   cloud {
     organization = "mythal"
-    token        = var.terraform_cloud_token
 
     workspaces {
       name = "roze"
