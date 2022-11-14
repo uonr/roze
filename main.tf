@@ -22,12 +22,20 @@ provider "linode" {
 }
 
 
+resource "null_resource" "build_image" {
+  provisioner "local-exec" {
+    command = "nix build"
+  }
+}
+
+
 resource "linode_image" "roze" {
   label  = "Roze"
   region = var.region
 
-  file_path = var.image_path
-  file_hash = filemd5(var.image_path)
+  file_path  = var.image_path
+  file_hash  = filemd5(var.image_path)
+  depends_on = [null_resource.build_image]
 }
 
 
